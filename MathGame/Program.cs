@@ -30,11 +30,13 @@ namespace simpleMathGame
                 Console.WriteLine("If you want to use Subtraction write sub\n");
                 Console.WriteLine("If you want to use Multiplication write multi\n");
                 Console.WriteLine("If you want to use Division write div\n");
+                Console.WriteLine("If you want to check your operation history write 'history'\n");
 
                 var choice = Console.ReadLine();
 
                 if (choice == "add")
                 {
+                    Console.Clear();
                     int _firstNumber;
                     int _secondNumber;
                     int _result;
@@ -49,7 +51,7 @@ namespace simpleMathGame
                             Console.WriteLine("Write and integer value!");
                             break;
                         }
-                        Console.WriteLine("Write your second number");
+                        Console.WriteLine("\nWrite your second number");
                         if (!int.TryParse(Console.ReadLine(), out _secondNumber))
                         {
                             Console.WriteLine("Write an integer value!");
@@ -57,7 +59,7 @@ namespace simpleMathGame
                         }
 
                         _result = _firstNumber + _secondNumber;
-                        Console.WriteLine($"Your result is: {_result}");
+                        Console.WriteLine($"\nYour result is: {_result}");
 
                         history.Add(_result);
                         game.Add(_gameType);
@@ -70,6 +72,7 @@ namespace simpleMathGame
 
                 if (choice == "sub")
                 {
+                    Console.Clear();
                     int _firstNumber;
                     int _secondNumber;
                     int _result;
@@ -84,14 +87,14 @@ namespace simpleMathGame
                             Console.WriteLine("Write and integer value!");
                             break;
                         }
-                        Console.WriteLine("Write your second number");
+                        Console.WriteLine("\nWrite your second number");
                         if (!int.TryParse(Console.ReadLine(), out _secondNumber))
                         {
                             Console.WriteLine("Write an integer value!");
                             break;
                         }
                         _result = _firstNumber - _secondNumber;
-                        Console.WriteLine($"Your result is: {_result}");
+                        Console.WriteLine($"\nYour result is: {_result}");
 
                         history.Add(_result);
                         game.Add(_gameType);
@@ -103,6 +106,7 @@ namespace simpleMathGame
 
                 if (choice == "multi")
                 {
+                    Console.Clear();
                     int _firstNumber;
                     int _secondNumber;
                     int _result;
@@ -118,14 +122,14 @@ namespace simpleMathGame
                             Console.WriteLine("Write and integer value!");
                             break;
                         }
-                        Console.WriteLine("Write your second number");
+                        Console.WriteLine("\nWrite your second number");
                         if (!int.TryParse(Console.ReadLine(), out _secondNumber))
                         {
                             Console.WriteLine("Write an integer value!");
                             break;
                         }
                         _result = _firstNumber * _secondNumber;
-                        Console.WriteLine($"Your result is: {_result}");
+                        Console.WriteLine($"\nYour result is: {_result}");
 
                         history.Add(_result);
                         game.Add(_gameType);
@@ -137,6 +141,7 @@ namespace simpleMathGame
 
                 if (choice == "div")
                 {
+                    Console.Clear();
                     int _firstNumber;
                     int _secondNumber;
                     int _result;
@@ -152,14 +157,24 @@ namespace simpleMathGame
                             Console.WriteLine("Write and integer value!");
                             break;
                         }
-                        Console.WriteLine("Write your second number");
+                        Console.WriteLine("\nWrite your second number");
                         if (!int.TryParse(Console.ReadLine(), out _secondNumber))
                         {
                             Console.WriteLine("Write an integer value!");
                             break;
                         }
+
+                        if(_firstNumber == 0 || _secondNumber == 0)
+                        {
+                            Console.WriteLine("Cannot divide by zero!");
+                            break;
+                        }
+
+
                         _result = _firstNumber / _secondNumber;
-                        Console.WriteLine($"Your result is: {_result}");
+
+
+                        Console.WriteLine($"\nYour result is: {_result}");
 
                         history.Add(_result);
                         game.Add(_gameType);
@@ -171,23 +186,24 @@ namespace simpleMathGame
 
                 if (choice == "history")
                 {
+                    Console.Clear();
                     for (int i = 0; i < history.Count; i++)
                     {
                         if (game[i] == "Subdivision")
                         {
-                            Console.WriteLine($"History: {firstNumber[i]} - {secondNumber[i]} = {history[i]} {game[i]} ");
+                            Console.WriteLine($"\nHistory: {firstNumber[i]} - {secondNumber[i]} = {history[i]} {game[i]} ");
                         }
                         if (game[i] == "Addition")
                         {
-                            Console.WriteLine($"History: {firstNumber[i]} + {secondNumber[i]} = {history[i]} {game[i]} ");
+                            Console.WriteLine($"\nHistory: {firstNumber[i]} + {secondNumber[i]} = {history[i]} {game[i]} ");
                         }
                         if (game[i] == "Multiplication")
                         {
-                            Console.WriteLine($"History: {firstNumber[i]} + {secondNumber[i]} = {history[i]} {game[i]} ");
+                            Console.WriteLine($"\nHistory: {firstNumber[i]} * {secondNumber[i]} = {history[i]} {game[i]} ");
                         }
                         if (game[i] == "Division")
                         {
-                            Console.WriteLine($"History: {firstNumber[i]} + {secondNumber[i]} = {history[i]} {game[i]} ");
+                            Console.WriteLine($"\nHistory: {firstNumber[i]} / {secondNumber[i]} = {history[i]} {game[i]} ");
                         }
 
                     }
